@@ -1,22 +1,19 @@
-import React from 'react'
-import Loading from '../components/Loading'
-import FatalError from './500'
-import Exercises from './Exercises'
-import useFetch from '../hooks/useFetch'
-import url from '../config'
+import React from 'react';
+import Loading from '../components/Loading';
+import FatalError from './500';
+import Exercises from './Exercises';
+import useFetch from '../hooks/useFetch';
+import url from '../config';
 
-const ExercisesContainer = () => {
-    const { data, loading, error } = useFetch(`${url}/exercises`)
+const ExercisesContainer = (props) => {
+	console.log('Parametro recibido', props);
+	const { data, loading, error } = useFetch(`${url}/exercises`);
 
-    if(loading)
-        return <Loading />
-            
-    if(error)
-        return <FatalError />
+	if (loading) return <Loading />;
 
-    return <Exercises
-        data={data}            
-    />
-}
+	if (error) return <FatalError />;
 
-export default ExercisesContainer
+	return <Exercises data={data} />;
+};
+
+export default ExercisesContainer;
